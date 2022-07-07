@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:07:46 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/07 12:09:53 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/07 12:23:15 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,35 @@ void	ft_print_comb(void)
 	i = 0;
 	j = 0;
 	k = 0;
-	while (i <= 9)
+	while (k <= 9)
 	{
 		while (j <= 8)
 		{
-			while (k <= 7)
+			while (i <= 7)
 			{
 				ft_putnum3(k, i, j);
 				if (i != j && i != k && j != k)
 				{
-					ft_putnum3(k, j, i);
+					ft_putnum3(i, j, k);
 				}
-				i++;
+				if (k <= 9)
+				{
+					k++;
+					if (j <= 9)
+					{
+						j++;
+						if (i <= 9)
+						{
+							i++;
+						}
+						else
+							i = 0;
+					}
+					else
+						j = 0;
+				}
+				else
+					k = 0;
 				j++;
 				k++;
 			}
