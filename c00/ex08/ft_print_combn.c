@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 12:04:08 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/11 15:07:05 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/11 18:47:37 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	ft_print_combn(int n)
 	else if (n == 2)
 		write(1, "01, ", 4);
 	i = 0;
-	while (i < ft_pow(10, n))
+	while (i < ft_pow(10, n) && i <= 123456789)
 	{
 		ft_itodigits(i, arr);
 		ord = ft_are_digits_asc(arr, n);

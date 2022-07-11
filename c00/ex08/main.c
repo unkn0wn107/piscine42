@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:19:42 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/11 15:13:04 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/11 18:48:47 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -45,7 +45,7 @@ int main()
 		ft_print_combn(i);
 		i++;
 	}
-	//ft_print_combn(9);
+//	ft_print_combn(9);
 //	write(1, &RN, 1);
 	return 0;
 }
