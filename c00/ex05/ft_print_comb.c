@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:07:46 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/07 14:47:32 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/11 18:12:38 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putnum3(int i, int j, int k, int withComma)
+void	ft_putnum3(int i, int j, int k, int comma)
 {
 	char	a;
 	char	b;
@@ -29,13 +29,11 @@ void	ft_putnum3(int i, int j, int k, int withComma)
 	ft_putchar(a);
 	ft_putchar(b);
 	ft_putchar(c);
-	if (withComma)
+	if (comma)
 	{
 		ft_putchar(',');
 		ft_putchar(' ');
 	}
-	else
-		ft_putchar('.');
 }
 
 void	ft_print_comb(void)
@@ -55,7 +53,7 @@ void	ft_print_comb(void)
 			{
 				if (k > j && j > i && (i != 7 || j != 8 || k != 9))
 					ft_putnum3(i, j, k, 1);
-				else if (k > j && j > i && i == 7 && j == 8 && k == 9)
+				else if (i == 7 && j == 8 && k == 9)
 					ft_putnum3(i, j, k, 0);
 				k++;
 			}
