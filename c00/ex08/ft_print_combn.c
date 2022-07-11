@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 12:04:08 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/11 18:47:37 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/11 20:08:42 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ void	ft_print_combn(int n)
 {
 	int	arr[8];
 	int	i;
-	int	ord;
 
 	if (n == 1)
 	{
@@ -115,16 +114,17 @@ void	ft_print_combn(int n)
 	else if (n == 2)
 		write(1, "01, ", 4);
 	i = 0;
-	while (i < ft_pow(10, n) && i <= 123456789)
+	while (i < ft_pow(10, n) && i <= 23456789)
 	{
 		ft_itodigits(i, arr);
-		ord = ft_are_digits_asc(arr, n);
-		if (n != 1 && ord && arr[9 - n] != arr[9 - n + 1])
+		if (n != 1 && ft_are_digits_asc(arr, n) && arr[9 - n] != arr[9 - n + 1])
 		{
 			ft_putdigits(arr, n);
-			if (ord != -1)
+			if (ft_are_digits_asc(arr, n) != -1)
 				write(1, ", ", 2);
 		}
 		i++;
 	}
+	if (n == 9)
+		write(1, "123456789", 9);
 }
