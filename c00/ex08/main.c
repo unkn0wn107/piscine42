@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 18:19:42 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/11 13:32:34 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/11 15:03:00 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -39,7 +39,7 @@ int main()
 //	write(1, &RN, 1);
 //	printf("%d", ft_are_digits_asc(arr));
 //	write(1, &RN, 1);
-	ft_print_combn(3);
+	ft_print_combn(9);
 //	write(1, &RN, 1);
 	return 0;
 }
