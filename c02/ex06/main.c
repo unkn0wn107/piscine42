@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 20:10:01 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/10 21:01:53 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/11 20:23:43 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/11 21:55:45 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int	i;
+#include <stdio.h>
 
-	i = 0;
-	while (src[i] != '\0' && i < n)
+int	ft_str_is_printable(char *str);
+
+int	main(void)
+{
+	int	i = 0;
+	char str[][25] = {"", " ", "A\nBCDE", "abc\177deABCDE", "/"};
+	while (i < 5)
 	{
-		dest[i] = src[i];
+		printf("%d : %s\n", ft_str_is_printable(str[i]), str[i]);
 		i++;
 	}
-	if (i == n)
-		dest[i] = '\0';
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
-	return (dest);
 }
