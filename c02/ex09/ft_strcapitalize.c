@@ -6,18 +6,25 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 22:56:17 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/11 23:33:42 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/12 11:50:57 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-int	ft_strlen(char *str)
+
+char	*ft_strlowcase(char *str)
 {
-	int	i;
+	int		i;
+	char	c;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != '\0')
+	{
+		c = str[i];
+		if ('A' <= c && c <= 'Z')
+			str[i] = c + 'a' - 'A';
 		i++;
-	return (i);
+	}
+	return (str);
 }
 
 char	*ft_strcapitalize(char *str)
@@ -25,15 +32,18 @@ char	*ft_strcapitalize(char *str)
 	int		i;
 	char	c;
 	char	d;
-printf("%d", ft_strlen(str));
+
+	ft_strlowcase(str);
 	i = 0;
-	while (i < ft_strlen(str) - 1)
+	while (str[i] != '\0')
 	{
 		c = str[i];
 		d = str[i + 1];
-		if (i == 0 && 'a' > c && c > 'z')
+		if (i == 0 && 'a' <= c && c <= 'z')
 			str[0] = c - 'a' + 'A';
-		if ('a' <= d && d <= 'z' && (c < 65 || c > 122 || (90 < c && c < 97)))
+		if ('a' <= d && d <= 'z' && (c < '1' || c > 'z'
+				|| (90 < c && c < 97)
+				|| (57 < c && c < 65)))
 			str[i + 1] = d - 'a' + 'A';
 		i++;
 	}

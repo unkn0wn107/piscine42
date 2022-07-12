@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 20:10:01 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/11 20:21:58 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/12 13:38:32 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[i] = src[i];
 		i++;
 	}
-	if (i == n)
-		dest[i] = '\0';
 	while (i < n)
 	{
 		dest[i] = '\0';
