@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 00:11:02 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/13 14:15:04 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/13 16:17:38 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putchar_non_printable(char c, int with_zero)
 	char	d;
 
 	base = "0123456789abcdef";
-	if (c <= 16)
+	if (c < 16)
 	{
 		d = base[(int)c];
 		write(1, "\\", 1);
