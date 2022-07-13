@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:36:06 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/12 00:08:54 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/13 14:04:19 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	unsigned int	i;
 
 	i = 0;
-	dest[size - 1] = '\0';
 	while (i < size - 1 && src[i])
 	{
 		dest[i] = src[i];
