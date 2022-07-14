@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:13:56 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/15 00:37:10 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/12 14:01:35 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/12 14:50:45 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+int	ft_strcmp(char *s1, char *s2)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int				i;
 
 	i = 0;
-	while (dest[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	j = 0;
-	while (j < nb && src[j])
-	{
-		dest[i] = src[j];
-		i++;
-		j++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	return (s1[i] - s2[i]);
 }

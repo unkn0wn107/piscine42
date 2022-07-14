@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:13:56 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/15 00:37:10 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/12 15:59:04 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/13 14:41:42 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+char	*ft_strstr(char *str, char *to_find)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
+	if (!to_find[0])
+		return (str);
 	i = 0;
-	while (dest[i])
-		i++;
-	j = 0;
-	while (j < nb && src[j])
+	while (str[i])
 	{
-		dest[i] = src[j];
+		j = 0;
+		while (str[i + j] == to_find[j] || to_find[j] == '\0')
+		{
+			if (!to_find[j])
+				return (&str[i]);
+			j++;
+		}
 		i++;
-		j++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (0);
 }
