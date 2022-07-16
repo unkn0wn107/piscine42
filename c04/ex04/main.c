@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:05:06 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/14 15:29:20 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/15 11:52:25 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ int	main(void)
 	ft_putnbr_base(INT_MIN, "0123456789");
 	ft_putchar('\n');
 	printf("%d", INT_MIN);
+	printf("\n%x", INT_MIN);
 }
