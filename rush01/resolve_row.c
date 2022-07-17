@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 void	resolve_row_5(int **tab, int r);
-
 void	resolve_row_3(int **tab, int r);
 
 void	resolve_row(int **tab)
@@ -30,7 +29,7 @@ void	resolve_row(int **tab)
 		if (tab[r][5] == 1)
 			tab[r][4] = 4;
 		r++;
-	}	
+	}
 }
 
 void	resolve_row_5(int **tab, int r)

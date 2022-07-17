@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 void	resolve_col_5(int **tab, int c);
-
 void	resolve_col_3(int **tab, int c);
 
 void	resolve_col(int **tab)

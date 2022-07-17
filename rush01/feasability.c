@@ -6,16 +6,14 @@
 /*   By: jmoutous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 13:17:30 by jmoutous          #+#    #+#             */
-/*   Updated: 2022/07/16 13:46:59 by jmoutous         ###   ########lyon.fr   */
+/*   Updated: 2022/07/17 23:25:21 by jmoutous         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-// int	**ft_get_restab(char *str, int dim);
-
-int ft_is_feasable(int **tab, int dim)
+int	ft_is_feasable(int **tab, int dim)
 {
-	int row;
-	int col;
+	int	row;
+	int	col;
 
 	row = 1;
 	col = 1;
@@ -35,26 +33,3 @@ int ft_is_feasable(int **tab, int dim)
 	}
 	return (1);
 }
-
-// int	main()
-// {
-// 	int dim = 4;
-// 	int **tab;
-// 	tab = ft_get_restab("4 3 2 1 1 2 2 1 4 3 2 1 1 2 2 2", dim);
-// 	//Affiche le tableau intermediaire
-// 	int i = 0;
-// 	int j;
-// 	while (i < dim + 2)
-// 	{
-// 		j = 0;
-// 		while (j < dim + 2)
-// 		{
-// 			printf("%d\t", tab[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n\n");
-// 		i++;
-// 	}
-// 	printf("%d", ft_is_feasable(tab, dim));
-// 	return (0);
-// }

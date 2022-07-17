@@ -15,8 +15,10 @@
 int	ft_is_sep(char c)
 {
 	int		i;
-	char	sep[] = " ";
+	char	sep[2];
 
+	sep[0] = ' ';
+	sep[1] = '\0';
 	i = 0;
 	while (sep[i])
 	{
