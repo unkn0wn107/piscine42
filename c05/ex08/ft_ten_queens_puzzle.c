@@ -6,16 +6,17 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:50:28 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/18 19:56:55 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 00:25:10 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_display(char **map)
+void	ft_display(char map[10][11])
 {
 	int		r;
 	int		c;
+	char	a;
 
 	r = 0;
 	while (r < 10)
@@ -23,6 +24,8 @@ void	ft_display(char **map)
 		c = 0;
 		while (c < 10)
 		{
+			// map[r][c] = 1;
+			// a = map[r][c] + '0';
 			write(1, &map[r][c], 1);
 			write(1, " ", 1);
 			c++;
@@ -32,7 +35,7 @@ void	ft_display(char **map)
 	}
 }
 
-int	ft_count_and_display(char **map, int disp_c, int disp_r)
+int	ft_count_and_display(char map[10][11], int disp_c, int disp_r)
 {
 	int		r;
 	int		c;
@@ -63,7 +66,7 @@ int	ft_count_and_display(char **map, int disp_c, int disp_r)
 	return (count);
 }
 
-int	ft_queen_pos_ok(char **tab, int row, int col)
+int	ft_queen_pos_ok(char tab[10][11], int row, int col)
 {
 	int	x;
 	int	rdiagp;
@@ -90,8 +93,10 @@ int	ft_queen_pos_ok(char **tab, int row, int col)
 	return (1);
 }
 
-int	ft_put_queens(char **tab, int row, int col)
+int	ft_put_queens(char tab[10][11], int row, int col)
 {
+	ft_display(tab);
+	write(1, "\n", 1);
 	if (row == 9 && col == 10)
 		return (1);
 	else if (col == 10)
@@ -111,9 +116,10 @@ int	ft_put_queens(char **tab, int row, int col)
 	return (0);
 }
 #include <stdio.h>
+#include <string.h>
 int	ft_ten_queens_puzzle(void)
 {
-	char	*map[10];
+	char	map[10][11];
 	int		i;
 	int		j;
 	int		count;
@@ -122,7 +128,7 @@ int	ft_ten_queens_puzzle(void)
 	i = 0;
 	while (i < 10)
 	{
-		map[i] = "oooooooooo";
+		strcpy(map[i], "oooooooooo");
 		i++;
 	}
 	ft_display(map);
