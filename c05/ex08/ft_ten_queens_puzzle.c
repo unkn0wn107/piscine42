@@ -6,13 +6,13 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 17:50:28 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/19 00:25:10 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/19 00:57:30 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_display(char map[10][11])
+void	ft_display(int map[10][10])
 {
 	int		r;
 	int		c;
@@ -24,9 +24,8 @@ void	ft_display(char map[10][11])
 		c = 0;
 		while (c < 10)
 		{
-			// map[r][c] = 1;
-			// a = map[r][c] + '0';
-			write(1, &map[r][c], 1);
+			a = map[r][c] + '0';
+			write(1, &a, 1);
 			write(1, " ", 1);
 			c++;
 		}
@@ -35,7 +34,7 @@ void	ft_display(char map[10][11])
 	}
 }
 
-int	ft_count_and_display(char map[10][11], int disp_c, int disp_r)
+int	ft_count_and_display(int map[10][10], int disp_c, int disp_r)
 {
 	int		r;
 	int		c;
@@ -49,13 +48,13 @@ int	ft_count_and_display(char map[10][11], int disp_c, int disp_r)
 		c = 0;
 		while (c < 10)
 		{
-			if (map[r][c] == 'q')
+			if (map[r][c] == 1)
 				count++;
-			if (map[r][c] == 'q' && disp_c)
+			if (map[r][c] == 1 && disp_c)
 				pos = c + '0';
-			if (map[r][c] == 'q' && disp_r)
+			if (map[r][c] == 1 && disp_r)
 				pos = r + '0';
-			if (map[r][c] == 'q' && (disp_r || disp_c))
+			if (map[r][c] == 1 && (disp_r || disp_c))
 				write(1, &pos, 1);
 			c++;
 		}
@@ -66,7 +65,7 @@ int	ft_count_and_display(char map[10][11], int disp_c, int disp_r)
 	return (count);
 }
 
-int	ft_queen_pos_ok(char tab[10][11], int row, int col)
+int	ft_queen_pos_ok(int tab[10][10], int row, int col)
 {
 	int	x;
 	int	rdiagp;
@@ -81,22 +80,27 @@ int	ft_queen_pos_ok(char tab[10][11], int row, int col)
 	cdiagm = col - 1;
 	while (x < 10)
 	{
-		if (x != row && tab[x][col] == 'q')
+		if ((x != row && tab[x][col] == 1) || (x != col && tab[row][x] == 1))
 			return (0);
-		if (x != col && tab[row][x] == 'q')
+		if ((rdiagp < 10 && cdiagp < 10 && tab[rdiagp][cdiagp] == 1)
+				|| (rdiagm >= 0 && cdiagm >= 0 && tab[rdiagm][cdiagm] == 1))
 			return (0);
-		if (rdiagp < 10 && cdiagp < 10 && tab[rdiagp][cdiagp] == 'q')
+		if ((rdiagp < 10 && cdiagm >= 0 && tab[rdiagp][cdiagm] == 1)
+				|| (rdiagm >= 0 && cdiagp < 10 && tab[rdiagm][cdiagp] == 1))
 			return (0);
-		if (rdiagm >= 0 && cdiagm >= 0 && tab[rdiagm][rdiagp] == 'q')
-			return (0);
+		rdiagp++;
+		cdiagp++;
+		rdiagm--;
+		cdiagm--;
+		x++;
 	}
 	return (1);
 }
-
-int	ft_put_queens(char tab[10][11], int row, int col)
+#include <stdio.h>
+int	ft_put_queens(int tab[10][10], int row, int col)
 {
-	ft_display(tab);
-	write(1, "\n", 1);
+	int	r = 0;
+	printf("row %d - col %d - pos ok %d\n", row, col, ft_queen_pos_ok(tab, row, col));
 	if (row == 9 && col == 10)
 		return (1);
 	else if (col == 10)
@@ -104,35 +108,49 @@ int	ft_put_queens(char tab[10][11], int row, int col)
 		row++;
 		col = 0;
 	}
-	if (tab[row][col] == 'q')
-		return	(ft_put_queens(tab, row, col + 1));
-	else if (ft_queen_pos_ok(tab, row, col))
-	{	
-		ft_display(tab);
-		tab[row][col] = 'q';
-		if (ft_put_queens(tab, row, col + 1))
-		   return (1);
+	while (r < 10)
+	{
+		if (tab[r][col] == 1)
+			return	(ft_put_queens(tab, r, col + 1));
+		else if (ft_queen_pos_ok(tab, r, col))
+		{
+			tab[r][col] = 1;
+			// ft_display(tab);
+			if (ft_put_queens(tab, r, col + 1))
+				return (1);
+		}
+		r++;
 	}
+	//tab[row][col] = 0;
 	return (0);
 }
-#include <stdio.h>
+
 #include <string.h>
 int	ft_ten_queens_puzzle(void)
 {
-	char	map[10][11];
+	int		map[10][10];
 	int		i;
 	int		j;
+	int		k;
+	int		l;
 	int		count;
 
 	count = 0;
-	i = 0;
-	while (i < 10)
-	{
-		strcpy(map[i], "oooooooooo");
-		i++;
-	}
-	ft_display(map);
-	//ft_count_and_display(map, 0, 1);
+
+	// k = 0;
+	// while (k < 10)
+	// {
+	// 	l = 0;
+	// 	while (l < 10)
+	// 	{
+	// 		map[k][l] = 0;
+	// 		l++;
+	// 	}
+	// 	k++;
+	// }
+	// ft_put_queens(map, 2, 2);
+	// ft_display(map);
+
 	i = 0;
 	while (i < 10)
 	{
@@ -140,9 +158,23 @@ int	ft_ten_queens_puzzle(void)
 		while (j < 10)
 		{
 			//printf("i %d - j %d", i, j);
-			ft_put_queens(map, i, j);
+			// ft_put_queens(map, i, j);
 			//printf("%d, ", ft_count_and_display(map, 0, 0));
-			if (ft_put_queens(map, i, j) && ft_count_and_display(map, 0, 0) == 10)
+			k = 0;
+			while (k < 10)
+			{
+				l = 0;
+				while (l < 10)
+				{
+					map[k][l] = 0;
+					l++;
+				}
+				k++;
+			}
+			ft_put_queens(map, i, j);
+			printf("Queens num : %d\n", ft_count_and_display(map, 0, 0));
+			ft_display(map);
+			if (ft_count_and_display(map, 0, 0) == 10)
 			{
 				ft_count_and_display(map, 1, 0);
 				ft_count_and_display(map, 0, 1);
@@ -152,7 +184,7 @@ int	ft_ten_queens_puzzle(void)
 		}
 		i++;
 	}
-	return (count);
+	return (1);
 }
 
 int main()
