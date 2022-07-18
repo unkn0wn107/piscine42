@@ -6,12 +6,13 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 20:05:06 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/15 00:29:29 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 16:42:58 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int ft_atoi(char *str);
