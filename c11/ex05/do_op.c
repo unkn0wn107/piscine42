@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 22:57:39 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/21 00:15:16 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/21 00:19:06 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ int	main(int argc, char const *argv[])
 		return (1);
 	res = ft_launch_cal(ft_pf[ft_get_op_num(argv[2][0])], n1, n2);
 	ft_putnbr(res);
+	write(1, "\n", 1);
 	return (0);
 }
