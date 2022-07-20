@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 17:08:09 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/20 16:32:47 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/20 13:54:54 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/20 14:17:16 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-int	ft_ultimate_range(int **range, int min, int max)
+typedef struct s_point
 {
-	int	size;
-	int	i;
+	int	x;
+	int	y;
+}	t_point;
 
-	if (min >= max)
-	{
-		*range = (void *)0;
-		return (0);
-	}
-	size = max - min;
-	*range = (int *)malloc(size * sizeof(int));
-	if (!*range)
-		return (-1);
-	i = 0;
-	while (i < size)
-	{
-		*range = &min;
-		range++;
-		min++;
-		i++;
-	}
-	return (size);
-}
+#endif
