@@ -64,8 +64,8 @@ void	ft_printchars(char *ptr_c, int size)
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
-	int		i;
-	char	*ptr_c;
+	unsigned int	i;
+	char			*ptr_c;
 
 	if (size == 0)
 		return (addr);
