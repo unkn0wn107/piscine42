@@ -11,14 +11,14 @@
 # **************************************************************************** #
 
 NAMES = ft_putchar ft_putstr ft_strcmp ft_strlen ft_swap
-OBJS = ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o
+OBJS = ${SRCS:.c=.o}
 H = includes/ft.h
 CFLAGS = -Wall -Wextra -Werror
 
 all:		libft.a
 
 libft.a:
-			$(foreach src, $(NAMES), gcc $(CFLAGS) -c -I$(H) srcs/$(src).c -o srcs/$(src).o;)
+			gcc ${CFLAGS} -c $< -o ${<:.c=.o} -I ${H}
 			cd srcs && ar rc ../libft.a $(OBJS)
 
 clean:
