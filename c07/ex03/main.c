@@ -14,7 +14,7 @@ char *ft_strjoin(int size, char **strs, char *sep);
 
 int main()
 {
-	char *strs[] = { "Je", "teste", "strjoin" };
+	char *strs[3] = { "Je", "teste", "strjoin" };
 	char *joined = ft_strjoin(2, strs, "/");
 	printf("%s", joined);
 }
