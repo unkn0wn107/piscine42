@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 14:48:07 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/26 23:17:23 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/12 15:59:04 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/13 14:41:42 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+char	*ft_strstr(char *str, char *to_find)
 {
-	unsigned int	i;
+	int	i;
+	int	j;
 
+	if (!to_find[0])
+		return (str);
 	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
+	while (str[i])
 	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
+		j = 0;
+		while (str[i + j] == to_find[j] || to_find[j] == '\0')
+		{
+			if (!to_find[j])
+				return (&str[i]);
+			j++;
+		}
 		i++;
 	}
 	return (0);
