@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 11:37:17 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/15 11:40:41 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/16 01:12:44 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/16 02:08:13 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-int	main(int argc, char **argv)
+int	ft_check_sep(char c, char *sep)
 {
 	int	i;
-	int	j;
 
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (sep[i])
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			write(1, &argv[i][j], 1);
-			j++;
-		}
-		write(1, "\n", 1);
+		if (c == sep[i])
+			return (1);
 		i++;
 	}
+	return (0);
 }
+
+int	ft_count_words(char *str)
+{
+	int	i;
+
+

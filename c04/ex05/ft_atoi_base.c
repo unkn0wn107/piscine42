@@ -6,7 +6,7 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 00:09:35 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/15 13:02:52 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/26 22:05:54 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	ft_base_error(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '-' || base[i] == '+' || base[i] <= ' ')
+		if (base[i] == '-' || base[i] == '+'
+			|| base[i] <= ' ' || base[i] == 127)
 			return (1);
 		j = i + 1;
 		while (base[j])

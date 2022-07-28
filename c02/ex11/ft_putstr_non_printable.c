@@ -43,7 +43,7 @@ void	ft_putstr_non_printable(char *str)
 	while (str[i] != '\0')
 	{
 		c = str[i];
-		if (c < 32 || c > 126)
+		if (c < 32 || c == 127)
 			ft_putchar_non_printable(c, 1);
 		else
 			write(1, &c, 1);
