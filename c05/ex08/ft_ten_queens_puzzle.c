@@ -12,28 +12,6 @@
 
 #include <unistd.h>
 
-void	ft_display(int map[10][10])
-{
-	int		r;
-	int		c;
-	char	a;
-
-	r = 0;
-	while (r < 10)
-	{
-		c = 0;
-		while (c < 10)
-		{
-			a = map[r][c] + '0';
-			write(1, &a, 1);
-			write(1, " ", 1);
-			c++;
-		}
-		write(1, "\n", 1);
-		r++;
-	}
-}
-
 void	ft_display_answ(int map[10][10])
 {
 	int		r;
@@ -92,8 +70,7 @@ int	ft_put_queens(int map[10][10], int row, int count)
 
 	if (row == 10)
 	{
-		ft_display(map);
-		write(1, "\n", 1);
+		ft_display_answ(map);
 		count++;
 		return (count);
 	}
