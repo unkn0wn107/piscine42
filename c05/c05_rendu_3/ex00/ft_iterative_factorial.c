@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 13:43:20 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/27 00:44:44 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/18 12:59:57 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/18 13:11:52 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int	ft_iterative_factorial(int nb)
 {
-	int	i;
+	int	res;
 
-	i = 2;
-	if (nb == 1)
-		return (1);
-	while (i * i <= nb && i <= 46340)
+	res = 1;
+	if (nb < 0)
+		res = 0;
+	while (nb > 0)
 	{
-		if (i * i == nb)
-			return (i);
-		i++;
+		res *= nb;
+		nb--;
 	}
-	return (0);
+	return (res);
 }

@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 13:43:20 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/27 00:44:44 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/18 13:02:24 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/18 13:06:59 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
+int	ft_recursive_factorial(int nb)
 {
-	int	i;
-
-	i = 2;
-	if (nb == 1)
+	if (nb < 0)
+		return (0);
+	if (nb == 0)
 		return (1);
-	while (i * i <= nb && i <= 46340)
-	{
-		if (i * i == nb)
-			return (i);
-		i++;
-	}
-	return (0);
+	return (nb * ft_recursive_factorial(nb - 1));
 }
