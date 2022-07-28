@@ -1,0 +1,153 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: agaley <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/25 22:40:27 by mchenava          #+#    #+#              #
+#    Updated: 2022/07/26 02:49:29 by agaley           ###   ########lyon.fr    #
+#                                                                              #
+# **************************************************************************** #
+
+PROG_NAME = 		bsq
+LIB_NAME = 			lib_bsq.a
+
+SOURCE_FILES = 		./src/
+OBJ_FILES = 		./obj/
+INCLUDES_PATH = 	./includes/
+TESTS = 			./tests/
+
+IMP_MODULE = 		implemented_ft
+PARSE_MODULE = 		parsing
+SOLVER_MODULE = 	solver
+UTILS_MODULE = 		utilities
+
+IMP_MODULE_LIB = 	lib_implemented_ft.a
+PARSE_MODULE_LIB = 	lib_parsing.a
+SOLVER_MODULE_LIB =	lib_solver.a
+UTILS_MODULE_LIB = 	lib_utilities.a
+
+IMP_MODULE_OUT = 	implemented_ft.out
+PARSE_MODULE_OUT = 	parsing.out
+SOLVER_MODULE_OUT =	solver.out
+UTILS_MODULE_OUT = 	utilities.out
+
+CC = 				gcc
+CFLAGS = 			-Wall -Wextra -Werror
+EXTRA_FLAGS = 		-c
+
+CLEAN = 			rm -rf
+
+GREEN = 			'\033[0;32m'
+BGreen=				'\033[1;32m'
+YELLOW = 			'\033[1;33m'
+CYAN = 				'\033[0;36'
+NC = 				'\033[0;0m'
+
+all : $(PROG_NAME) 
+
+$(PROG_NAME) : obj_dir implemented_ft_lib parsing_lib utilities_lib
+	#*================================================CREATE_ALL====================================================================*#
+	$(CC) $(CFLAGS) -g -fsanitize=address $(IMP_MODULE_LIB) $(PARSE_MODULE_LIB) $(UTILS_MODULE_LIB) test.c -o $(PROG_NAME)
+	@echo "\n✅ > $(BGreen) $(PROG_NAME) $(NC) created.\n"
+
+clean :
+	$(CLEAN) $(OBJ_FILES)
+	
+fclean : clean
+	$(CLEAN) $(PROG_NAME)
+
+re : fclean obj_dir all
+
+test : fclean
+	$(CC) $(CFLAGS) -g $(SOURCE_FILES)*/*.c test.c -o $(PROG_NAME)_test
+
+check:
+	norminette $(SOURCE_FILES)
+		
+obj_dir :
+	mkdir $(OBJ_FILES)
+
+implemented_ft_out : implemented_ft_lib
+	#*================================================CREATE_IMPLEMENTED_FT_OUT=====================================================*#
+	$(CC) $(CFLAGS) $(IMP_MODULE_LIB) test.c -o $(IMP_MODULE_OUT)
+	@echo "\n✅ > $(GREEN) implemented_ft $(NC) as been compiled in .out.\n"
+
+parsing_out : parsing_lib
+	#*================================================CREATE_PARSING_OUT============================================================*#
+	$(CC) $(CFLAGS) $(PARSE_MODULE_LIB) test.c -o $(PARSE_MODULE_OUT)
+	@echo "\n✅ > $(GREEN) parsing $(NC) as been compiled in .out.\n"
+
+utilities_out : utilities_lib
+	#*================================================CREATE_UTILITIES_OUT==========================================================*#
+	$(CC) $(CFLAGS) $(UTILS_MODULE_LIB) test.c -o $(UTILS_MODULE_OUT)
+	@echo "\n✅ > $(GREEN) utilities $(NC) as been compiled in .out.\n"
+
+all_lib : implemented_ft_lib parsing_lib utilities_lib
+
+implemented_ft_lib : implemented_ft_obj
+	#*================================================CREATE_IMPLEMENTED_FT_LIB=====================================================*#
+	ar rc $(IMP_MODULE_LIB) $(OBJ_FILES)$(IMP_MODULE)/*.o
+	ranlib $(IMP_MODULE_LIB)
+	@echo "\n📚 > $(CYAN) implemented_ft $(NC) library as been created.\n"
+
+parsing_lib : parsing_obj
+	#*================================================CREATE_PARSING_LIB============================================================*#
+	ar rc $(PARSE_MODULE_LIB) $(OBJ_FILES)$(PARSE_MODULE)/*.o
+	ranlib $(PARSE_MODULE_LIB)
+	@echo "\n📚 > $(CYAN) parsing $(NC) library as been created.\n"
+
+utilities_lib : utilities_obj
+	#*================================================CREATE_UTILITIES_LIB==========================================================*#
+	ar rc $(UTILS_MODULE_LIB) $(OBJ_FILES)$(UTILS_MODULE)/*.o
+	ranlib $(UTILS_MODULE_LIB)
+	@echo "\n📚 > $(CYAN) utilities $(NC) library as been created.\n"
+
+
+
+all_obj : implemented_ft_obj parsing_obj utilities_obj
+
+implemented_ft_obj :
+	#*================================================CREATE_IMPLEMENTED_FT_OBJ_DIR=================================================*#
+	mkdir $(OBJ_FILES)$(IMP_MODULE)
+	@echo "\n📂 > $(YELLOW)implemented_ft$(NC) dir as been created.\n"
+	
+	#*================================================COMPILING_OBJ_FILES===========================================================*#
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(IMP_MODULE)/ft_put_error.c			-o $(OBJ_FILES)/$(IMP_MODULE)/ft_put_error.o
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(IMP_MODULE)/ft_split.c				-o $(OBJ_FILES)/$(IMP_MODULE)/ft_split.o
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(IMP_MODULE)/str.c 					-o $(OBJ_FILES)/$(IMP_MODULE)/str.o
+	@echo "\n🛠 > $(YELLOW) implemented_ft $(NC) module as been compilde."
+
+parsing_obj :
+	#*================================================CREATE_PARSING_OBJ_DIR========================================================*#
+	mkdir $(OBJ_FILES)$(PARSE_MODULE)
+	@echo "\n📂 > $(YELLOW) parsing $(NC) dir as been created.\n"
+	
+	#*================================================COMPILING_OBJ_FILES===========================================================*#
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(PARSE_MODULE)/check_map_file.c		-o $(OBJ_FILES)/$(PARSE_MODULE)/check_map_file.o			
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(PARSE_MODULE)/get_params.c 		-o $(OBJ_FILES)/$(PARSE_MODULE)/get_params.o
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(PARSE_MODULE)/parsing.c 			-o $(OBJ_FILES)/$(PARSE_MODULE)/parsing.o
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(PARSE_MODULE)/read_file.c 			-o $(OBJ_FILES)/$(PARSE_MODULE)/read_file.o
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(PARSE_MODULE)/read_first_line.c 	-o $(OBJ_FILES)/$(PARSE_MODULE)/read_first_line.o
+	@echo "\n🛠 > $(YELLOW) parsing $(NC) module as been compilde.\n"
+
+utilities_obj :
+	#*================================================CREATE_UTILITIES_OBJ_DIR======================================================*#
+	mkdir $(OBJ_FILES)$(UTILS_MODULE)
+	@echo "\n📂 > $(YELLOW) utilities $(NC) dir as been created.\n"
+	
+	#*================================================COMPILING_OBJ_FILES===========================================================*#
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(UTILS_MODULE)/trash.c 				-o $(OBJ_FILES)/$(UTILS_MODULE)/trash.o
+	$(CC) $(CFLAGS) $(EXTRA_FLAGS) $(SOURCE_FILES)/$(UTILS_MODULE)/alloc_lib.c 			-o $(OBJ_FILES)/$(UTILS_MODULE)/alloc_lib.o
+	@echo "\n🛠 > $(YELLOW) utilities$(NC) module as been compilde.\n"
+
+ci-test:	check
+			ls */*
+			$(CC) $(CFLAGS) -g $(SOURCE_FILES)*/*.c test.c -o $(PROG_NAME)_test
+			ls */*
+			valgrind --leak-check=full	--show-leak-kinds=all --track-origins=yes --verbose ./$(PROG_NAME)_test
+
+.PHONY:		all all_obj test ci-test check clean fclean re \
+			implemented_ft_out parsing_out utilities_out all_lib implemented_ft_lib parsing_lib utilities_lib \
+			implemented_ft_obj parsing_obj utilities_obj 
