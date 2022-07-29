@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 16:49:07 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/29 01:04:47 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/18 13:43:20 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/27 00:44:44 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <limits.h>
-
-int	*ft_range(int min, int max);
-
-int main()
+int	ft_sqrt(int nb)
 {
-    int i = 0;
-    int *ints = ft_range(INT_MIN, INT_MAX);
-    if (!ints)
-        printf("null");
-    else
-    {
-        while(i<40)
-        {
-            printf("%d, ", ints[i]);
-            i++;
-        }
-    }
+	int	i;
+
+	i = 2;
+	if (nb == 1)
+		return (1);
+	while (i * i <= nb && i <= 46340)
+	{
+		if (i * i == nb)
+			return (i);
+		i++;
+	}
+	return (0);
 }

@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 16:49:07 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/29 01:04:47 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/19 17:08:09 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/20 16:32:47 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <limits.h>
+#include <stdlib.h>
 
-int	*ft_range(int min, int max);
-
-int main()
+int	ft_ultimate_range(int **range, int min, int max)
 {
-    int i = 0;
-    int *ints = ft_range(INT_MIN, INT_MAX);
-    if (!ints)
-        printf("null");
-    else
-    {
-        while(i<40)
-        {
-            printf("%d, ", ints[i]);
-            i++;
-        }
-    }
+	int	size;
+	int	i;
+
+	if (min >= max)
+	{
+		*range = (void *)0;
+		return (0);
+	}
+	size = max - min;
+	*range = (int *)malloc(size * sizeof(int));
+	if (!*range)
+		return (-1);
+	i = 0;
+	while (i < size)
+	{
+		*range = &min;
+		range++;
+		min++;
+		i++;
+	}
+	return (size);
 }

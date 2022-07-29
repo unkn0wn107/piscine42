@@ -6,10 +6,11 @@
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 17:43:46 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/19 19:22:37 by agaley           ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 23:14:54 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 char *ft_strjoin(int size, char **strs, char *sep);
 
 int main()

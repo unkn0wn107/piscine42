@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 16:49:07 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/29 01:04:47 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/18 12:59:57 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/18 13:11:52 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <limits.h>
-
-int	*ft_range(int min, int max);
-
-int main()
+int	ft_iterative_factorial(int nb)
 {
-    int i = 0;
-    int *ints = ft_range(INT_MIN, INT_MAX);
-    if (!ints)
-        printf("null");
-    else
-    {
-        while(i<40)
-        {
-            printf("%d, ", ints[i]);
-            i++;
-        }
-    }
+	int	res;
+
+	res = 1;
+	if (nb < 0)
+		res = 0;
+	while (nb > 0)
+	{
+		res *= nb;
+		nb--;
+	}
+	return (res);
 }

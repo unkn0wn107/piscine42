@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 16:49:07 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/29 01:04:47 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/18 17:15:16 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/29 00:45:09 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <limits.h>
-
-int	*ft_range(int min, int max);
-
-int main()
+int	ft_is_prime(int nb)
 {
-    int i = 0;
-    int *ints = ft_range(INT_MIN, INT_MAX);
-    if (!ints)
-        printf("null");
-    else
-    {
-        while(i<40)
-        {
-            printf("%d, ", ints[i]);
-            i++;
-        }
-    }
+	int	i;
+
+	if (nb > 1)
+	{
+		i = 2;
+		while (i < nb / 2)
+		{
+			if (nb % i == 0)
+				return (0);
+			i++;
+		}
+		return (1);
+	}
+	else
+		return (0);
 }

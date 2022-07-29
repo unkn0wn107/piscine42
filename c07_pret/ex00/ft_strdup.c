@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 16:49:07 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/29 01:04:47 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/19 16:05:44 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/19 17:06:21 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <limits.h>
+#include <stdlib.h>
 
-int	*ft_range(int min, int max);
-
-int main()
+char	*ft_strdup(char *src)
 {
-    int i = 0;
-    int *ints = ft_range(INT_MIN, INT_MAX);
-    if (!ints)
-        printf("null");
-    else
-    {
-        while(i<40)
-        {
-            printf("%d, ", ints[i]);
-            i++;
-        }
-    }
+	int		i;
+	char	*dup;
+
+	i = 0;
+	while (src[i])
+		i++;
+	dup = (char *)malloc((i + 1) * sizeof(char));
+	if (!dup)
+		return ((char *)0);
+	dup[i] = '\0';
+	while (i >= 0)
+	{
+		dup[i] = src[i];
+		i--;
+	}
+	return (dup);
 }
