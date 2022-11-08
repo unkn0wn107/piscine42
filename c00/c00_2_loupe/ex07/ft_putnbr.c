@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaley <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/16 01:12:44 by agaley            #+#    #+#             */
-/*   Updated: 2022/07/16 02:08:13 by agaley           ###   ########lyon.fr   */
+/*   Created: 2022/07/08 09:42:38 by agaley            #+#    #+#             */
+/*   Updated: 2022/07/08 11:02:19 by agaley           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-int	ft_check_sep(char c, char *sep)
+void	ft_putchar(char c)
 {
-	int	i;
-
-	i = 0;
-	while (sep[i])
-	{
-		if (c == sep[i])
-			return (1);
-		i++;
-	}
-	return (0);
+	write(1, &c, 1);
 }
 
-int	ft_count_words(char *str)
+void	ft_putnbr(int nb)
 {
-	int	i;
-
-
+	if (0 <= nb && nb < 10)
+		ft_putchar(nb + '0');
+	else if (-2147483648 < nb && nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-1 * nb);
+	}
+	else if (nb == -2147483648)
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(8 + '0');
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar((nb % 10) + '0');
+	}
+}
